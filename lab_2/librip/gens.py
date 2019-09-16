@@ -30,3 +30,7 @@ def field(items, *args):
 def gen_random(begin, end, num_count):
     pass
     # Необходимо реализовать генератор
+    i = 0
+    while i < num_count:
+        yield random.randint(begin, end)
+        i += 1

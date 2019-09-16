@@ -7,10 +7,28 @@ class Unique(object):
         # Например: ignore_case = True, Aбв и АБВ разные строки
         #           ignore_case = False, Aбв и АБВ одинаковые строки, одна из них удалится
         # По-умолчанию ignore_case = False
+        self.lst = items
+        self.index = 0
+        self.array = []
+        self.bool = 0
         pass
 
     def __next__(self):
-        # Нужно реализовать __next__    
+        # Нужно реализовать __next__
+        if self.index == len(self.lst):
+            return self.array
+        if self.index == 0:
+            self.array.append(self.lst[self.index])
+        else:
+            k = 0
+            while k < len(self.array):
+                if self.lst[self.index] == self.array[k]:
+                    self.bool += 1
+                k += 1
+            if self.bool == 0:
+                self.array.append(self.lst[self.index])
+        self.bool = 0
+        self.index += 1
         pass
 
     def __iter__(self):
