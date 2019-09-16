@@ -16,6 +16,6 @@ for i in a:
 data = ['a', 'B', 'A', 'b']
 c = Unique(data)
 for i in c:
-    if i != None:
+    #if i != None:
         print(i)
         break
