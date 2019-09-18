@@ -15,9 +15,11 @@ class Unique(object):
 
     def __next__(self):
         # Нужно реализовать __next__
-        if self.index == len(self.lst):
-            yield self.array
+        if self.index - 1 == len(self.lst):
             raise StopIteration
+        if self.index == len(self.lst):
+            self.index += 1
+            return self.array
         if self.index == 0:
             self.array.append(self.lst[self.index])
         else:
