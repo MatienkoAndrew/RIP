@@ -11,11 +11,9 @@ a = Unique(data1)
 for i in a:
     if i != None:
         print(i)
-    #    break
 
 data = ['a', 'B', 'A', 'b']
 c = Unique(data)
 for i in c:
     if i != None:
         print(i)
-     #   break

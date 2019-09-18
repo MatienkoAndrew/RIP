@@ -35,3 +35,19 @@
 # test_4
 # 1
 # 2
+
+# Декоратор print_result
+
+def	print_result(decorator_arg):
+	def	decorated_func():
+		print(decorator_arg.__name__)
+		if isinstance(decorator_arg(), int) == True or isinstance(decorator_arg(), str) == True:
+			print(decorator_arg())
+		elif isinstance(decorator_arg(), dict) == True:
+			for key, value in decorator_arg().items():
+				print(str(key) + ' = ' + str(value))
+		elif isinstance(decorator_arg(), list) == True:
+			for i in decorator_arg():
+				print(i)
+		return decorator_arg
+	return decorated_func()
