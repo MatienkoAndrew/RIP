@@ -40,14 +40,19 @@
 
 def	print_result(decorator_arg):
 	def	decorated_func():
+		# Печать имени функции,  которую вызвали
 		print(decorator_arg.__name__)
+		#Если возвращаемое значение у функции 'int' or 'string' => просто выводим их на экран
 		if isinstance(decorator_arg(), int) == True or isinstance(decorator_arg(), str) == True:
 			print(decorator_arg())
+		#Если возвращаемое значение у функции 'словарь' => печатаем ключ и значение, между ними '='
 		elif isinstance(decorator_arg(), dict) == True:
 			for key, value in decorator_arg().items():
 				print(str(key) + ' = ' + str(value))
+		# Если возвращаемое значение у функции 'массив' => печатаем в столбик его элементы
 		elif isinstance(decorator_arg(), list) == True:
 			for i in decorator_arg():
 				print(i)
+		# Возвращаем указатель на функцию
 		return decorator_arg
 	return decorated_func()
