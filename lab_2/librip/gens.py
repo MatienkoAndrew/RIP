@@ -12,16 +12,14 @@ import random
 
 def field(items, *args):
     assert len(args) > 0
-    # Необходимо реализовать генератор
-    if (len(args) == 1):
+    if len(args) == 1:
         for es in items:
             if (args[0] in es and args[0] != 'None'):
                 yield es[args[0]]
     else:
         for es in items:
-            for i in range(len(args)):
-                if (args[i] in es and args[i] != 'None'):
-                    yield es[args[i]]
+            yield {j : es[j] for j in args if j != None}
+
 
 # Генератор списка случайных чисел
 # Пример:

@@ -8,6 +8,12 @@ goods = [
     {'title': 'Вешалка для одежды', 'price': 800, 'color': 'white'}
 ]
 
-# Реализация задания 1
-a = field(goods, 'title', 'color', 'price')
-print(list(a))
+print(list(field(goods, None)))
+
+print(list(field(goods, 'title')))
+
+print(list(field(goods, 'title', 'price')))
+
+print(list(field(goods, 'title', 'price', 'color')))
+
+print(list(field(goods, 'title', 'price', None, 'color', None)))

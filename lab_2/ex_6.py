@@ -6,7 +6,7 @@ from librip.decorators import print_result
 from librip.gens import field, gen_random
 from librip.iterators import Unique as unique
 
-path = None
+path = 'data_light.json'
 
 # Здесь необходимо в переменную path получить
 # путь до файла, который был передан при запуске
@@ -23,8 +23,8 @@ with open(path) as f:
 
 @print_result
 def f1(arg):
+    #print(field(data, 'job-name'))
     raise NotImplemented
-
 
 @print_result
 def f2(arg):
@@ -43,3 +43,5 @@ def f4(arg):
 
 with timer():
     f4(f3(f2(f1(data))))
+
+f1()

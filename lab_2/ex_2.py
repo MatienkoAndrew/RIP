@@ -9,8 +9,8 @@ data2 = gen_random(1, 3, 10)
 # print(list(data2))
 a = Unique(data1)
 for i in a:
-    if i != None:
-        print(i)
+   if i != None:
+       print(i)
 
 data = ['a', 'B', 'A', 'b']
 c = Unique(data)
