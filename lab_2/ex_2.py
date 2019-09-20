@@ -8,13 +8,8 @@ data2 = gen_random(1, 3, 10)
 # Реализация задания 2
 
 a = Unique(data1)
-#print(list(i for i in a if i != None))
-for i in a:
-   if i != None:
-       print(i)
+print([i for i in a if i != None])
 
 data = ['a', 'B', 'A', 'b']
 c = Unique(data)
-for i in c:
-    if i != None:
-        print(i)
+print([i for i in c if i != None])
