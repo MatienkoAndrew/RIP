@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <label for="from">From:</label><br>
+    <input type="text" id="from" required placeholder="Initial value of x" class="input"><br>
+    <label for="to">To:</label><br>
+    <input type="text" id="to" required placeholder="Final value of x" class="input"><br>
+    <label for="function">Function:</label><br>
+    <input type="text" id="function" required placeholder="Enter function" class="input"><br>
+
+    <button class="plot-button">Plot!</button><br>
+
+    <div class="plot" id="plot"></div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <script type="text/javascript" src="plot.js"></script>
+
+</body>
+</html>
