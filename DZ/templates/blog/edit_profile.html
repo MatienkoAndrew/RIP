@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Profile edit</h1>
+    <form method="POST" enctype="multipart/form-data" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+{% endblock %}
+
+{#{% load static %}#}
+{#<html>#}
+{#    <head>#}
+{#        <title>Profile edit</title>#}
+{#        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">#}
+{#        <link rel="stylesheet" href="{% static 'css/blog.css' %}">#}
+{#    </head>#}
+{#    <body>#}
+{#        <div class="page-header">#}
+{#            <h1><a href="/">Nastya's service</a></h1>#}
+{#        </div>#}
+{#        <div class="col-md-8">#}
+{#            <h1>Изменение профиля:</h1><br>#}
+{#            <form method="POST" class="post-form">#}
+{#                {% csrf_token %}#}
+{#                {{ form.as_p }}#}
+{#                <button type="submit" class="btn btn-success">Save</button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </body>#}
+{#</html>#}

@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1 >Авторизация</h1>
+    <form method="POST" id="id_password">
+       {% csrf_token %}
+{#       {{ form.as_p }}#}
+         <label for="uname"><b>Username:</b></label>
+        <br/>
+        {{ form.username }}
+        <br/>
+
+        <label for="psw"><b>Password:</b></label>
+        <br/>
+        {{ form.password }}
+<br/>
+        <a href="{% url 'registration' %}">Ещё не зарегистрированы?</a>
+        <br/>
+       <button type="submit" id="button">Авторизоваться</button>
+        <br/>
+        <a href="/"><button type="button" class="cancelbtn">Cancel</button></a>
+    </form>
+{% endblock %}

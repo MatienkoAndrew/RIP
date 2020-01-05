@@ -1,0 +1,34 @@
+{% load static %}
+{% load avatar_tags %}
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Nastya's service</a></h1>
+        </div>
+        <div class="col-md-8">
+            <h1>Ваш профиль:</h1><br>
+            <a href="{% url 'edit_profile'%}">Изменить профиль</a>
+            <div class="profile">
+                <h2>User</h2>
+{#                {% if user.is_authenticated %}#}
+                    <img src=" {% avatar_url user 265%}" class="Avatar">
+{#                {% endif %}#}
+                <a href="{% url 'avatar_change' %}">Change avatar</a>
+                <div class="data">
+                    <h3 align="left">{{ user.username }}</h3>
+                    <h4>Имя: {{ user.first_name }}</h4>
+                    <h4>Фамилия: {{ user.last_name }}</h4>
+                    <h4>Почта: {{ user.email }}</h4>
+                </div>
+            <a href="/logout">Выход из профиля</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+        <title>Registration</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Nastya's service</a></h1>
+        </div>
+        <form method="POST" enctype="multipart/form-data" id="id_password">
+            {% csrf_token %}
+            <div class="registr">
+            {{ form.as_p }}
+{#            <div class="registr">#}
+{#                <h1>Регистрация</h1>#}
+{#                <h3>Username:</h3>#}
+{#                {{ form.username }}#}
+{#                <h3>Password:</h3>#}
+{#                {{ form.password1 }}#}
+{#                <h3>Password again:</h3>#}
+{#                {{ form.password2 }}#}
+{#                <h3>Имя:</h3>#}
+{#                {{ form.first_name }}#}
+{#                <h3>Фамилия:</h3>#}
+{#                {{ form.last_name }}#}
+{#                <h3>E-mail:</h3>#}
+{#                {{ form.email }}#}
+{#                <h3>Загрузите аватар:</h3>#}
+{#                {{ form.avatar }}#}
+                <br/>
+                <button type="submit" id="button">Зарегистрироваться</button>
+            </div>
+        </form>
+    </body>
+</html>

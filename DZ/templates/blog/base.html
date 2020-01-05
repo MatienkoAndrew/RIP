@@ -1,0 +1,128 @@
+{% load static %}
+{% load avatar_tags %}
+<html>
+    <head>
+        <title>Nastya's service</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+        <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.6.4'></script>
+
+    </head>
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <h1><a href="/">Nastya's service</a></h1>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                <h1><a href="/">Nastya's service</a></h1>
+            {% endif %}
+        </div>
+
+        <div class="col-md-8">
+            {% if user.is_authenticated %}
+                <div class="id_username">
+                    <h2 >Пользователь</h2>
+                    <img src="{% avatar_url user 265%}" class="Avatar_main">
+                    <div class="id_1">
+                        <br/>
+                        <p>{{ user.username }}</p>
+                        <a href="{% url 'profile' %}">Перейти в профиль</a>
+                    </div>
+                </div>
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+        </div>
+
+
+        <div class="ttt">
+        <div>
+            <nav>
+            <ul class="pagination">
+        <li>  <!-- Jump to Prvious Page -->
+          {% if posts.has_previous %}
+             <li class="previous"> <a href="?page={{ posts.previous_page_number }}">
+             <span aria-hidden="true">‹</span></a>
+          {% else %}
+              <li class="previous disabled"><a>‹</a>
+          {% endif %}
+        </li>
+         {% for page in posts.paginator.page_range %}
+            {% if page == posts.number %}
+            <li class="pg active"><a class = "page_number" href="?page={{page}}">{{page}}</a>
+            {% else %}
+            <li class="pg"><a class = "page_number" href="?page={{page}}">{{page}}</a>
+            {% endif %}
+        {% endfor %}
+        <li class="page-item">  <!-- Jump to Next Page -->
+          {% if posts.has_next %}
+            <li class="previous"> <a href="?page={{ posts.next_page_number }}">›</a></li>
+          {% else %}
+              <li class="next disabled"><a>›</a>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+        {% block script %}
+        {% endblock %}
+
+{#        <div class="pagination">#}
+{#            <span class="step-links">#}
+{#                {% if posts.has_previous %}#}
+{#                    <a class="page-link" href="?page=1">&laquo; first</a>#}
+{#                    <a class="page-link" href="?page={{ posts.previous_page_number }}">Предыдущая страница</a>#}
+{#                {% endif %}#}
+{##}
+{#                <span class="current">#}
+{#                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.#}
+{#                </span>#}
+{##}
+{#                {% if posts.has_next %}#}
+{#                    <a class="page-link" href="?page={{ posts.next_page_number }}">Следующая страница</a>#}
+{#                    <a class="page-link" href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>#}
+{#                {% endif %}#}
+{#            </span>#}
+{#        </div>#}
+
+
+        <script type="text/javascript">
+            function ajaxPagination() {
+                $('#pagination a.page-link').each((index, el) => {
+                    $(el).click((e) => {
+                        e.preventDefault();
+                        let page_url = $(el).attr('href');
+                        console.log(page_url);
+
+                        $.ajax({
+                            url: page_url,
+                            type: 'GET',
+                            success: (data) => {
+                                $('#/').empty();
+                                $('#/').append($(data).filter('#/').html());
+
+                                $('#pagination').empty();
+                                $('#pagination').append($(data).find('#pagination').html())
+
+                            }
+                        })
+                    })
+                })
+            }
+
+            $(document).ready(function () {
+                ajaxPagination()
+            });
+
+            $(document).ajaxStop(function () {
+                ajaxPagination()
+            });
+        </script>
+    </body>
+</html>
